@@ -22,30 +22,24 @@
 
     <nav>
         <ul>
-            <li><a href="index.jsp" class="here">Home</a></li>
-            <li><a href="voegtoe.jsp">Voeg toe</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="voegtoe.jsp" class="here">Voeg toe</a></li>
             <li><a href="overzicht.jsp">Overzicht</a></li>
         </ul>
     </nav>
 </header>
 
-<main id="index">
-    <article>
-        <h2>
-            Info
-        </h2>
-
-        <p>
-            Op deze site kan je allerlei info vinden over de biliotheek.
-        </p>
-
-        <p>
-            Je kan hier zien welke boeken er beschikbaar zijn in de bibliotheek en hoeveel er nog zijn.
-        </p>
-    </article>
-
-    <article>
-        <img src="images/bibliotheek.jpg" alt="foto bibliotheek">
+<main>
+    <article id="form" class="container">
+        <form action="#">
+            <p><label for="titel">Titel*</label><input type="text" id="titel" required autofocus></p>
+            <p><label for="auteur">Auteur*</label><input type="text" id="auteur" required></p>
+            <p><label for="aantal">Aantal*</label><input type="number" id="aantal" required></p>
+            <p><label for="genre">Genre*</label><input type="text" id="genre" required></p>
+            <p><label for="isbn">ISBN-nummer*</label><input type="text" id="isbn" required></p>
+            <p><label for="leeftijd">Leeftijdsclassificatie*</label><input type="number" id="leeftijd" required></p>
+            <p><input type="submit" id="verstuur" value="Indienen"></p>
+        </form>
     </article>
 </main>
 

@@ -1,0 +1,265 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --banner: #DE3400;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+
+html{
+    font-family: Georgia,serif;
+}
+
+/* Kleur aan header geven */
+
+header {
+    background-color: var(--banner);
+}
+
+/* Aanpassen van logo en titel */
+
+header .title {
+    display: flex;
+    align-items: flex-end;
+    width: 95%;
+    padding-top: .5em;
+}
+
+header .title h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--black);
+    align-self: center;
+}
+
+header .title img {
+    width: 150px;
+    margin-left: .5em;
+    margin-right: .5em;
+    margin-bottom: 5px;
+}
+
+
+/* Aanpassingen aan de nav zoals margins */
+
+nav{
+    padding: .3em 0;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: .5em 0;
+}
+
+nav ul li {
+    display: block;
+    color: var(--white);
+    text-align: center;
+    font-size: 1.3em;
+    width: 95%;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: var(--black);
+    display: block;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-right: 5px;
+    margin-left: .5em;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.here {
+    background-color: var(--banner);
+    border: 1px solid var(--black);
+}
+
+/* Styling aan main */
+
+main#index{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+main{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+main article{
+    text-align: center;
+    align-items: center;
+    max-width: 50rem;
+    margin-bottom: 2.5em;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+/* Article dingen als width en margins meegeven */
+
+article img {
+    max-width: 95%;
+    width: 75vw;
+    margin: auto;
+    padding-top: 1em;
+}
+
+article img {
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Padding geven en bolletjes wegdoen van list */
+
+li{
+    padding-bottom: 1em;
+    list-style: none;
+}
+
+/* Padding geven aan titels */
+
+h2{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* Padding geven aan tekst */
+
+p{
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/* Styling van de footer */
+
+footer{
+    background-color: var(--banner);
+    padding: .3em 0;
+    padding-left: .5em;
+}
+
+/* Styling van het formulier */
+
+form{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    align-items: center;
+    border: 1px solid var(--black);
+    max-width: 50rem;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#form form p {
+    text-align: right;
+}
+
+#form form .buttons {
+    text-align: left;
+}
+
+#form input, textarea {
+    grid-column: 2;
+}
+
+#form select, input, textarea {
+    width: 75%;
+}
+
+#form p.long label {
+    grid-column: 2;
+}
+
+input {
+    margin: 0;
+    width: 75%;
+}
+
+.container {
+    width: 90%;
+    max-width: 61rem;
+    margin: 0 auto;
+}
+
+/* Grootte en padding geven aan de map */
+
+iframe{
+    width: 400px;
+    height: 400px;
+    padding-bottom: 1em;
+}
+
+tr, th, td{
+    padding: 2em;
+    margin: 2em;
+}
+
+/* Header aanpassen aan schermen kleiner dan 400 pixels */
+
+@media screen and (max-width: 400px) {
+    header .title img{
+        width: 100px;
+    }
+
+    header .title h1{
+        font-size: 2rem;
+    }
+}
+
+/* Body, nav en map aanpassen als het scherm kleiner is dan 775 pixels */
+
+@media screen and (max-width: 775px) {
+    body {
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin-left: .3em;
+    }
+
+    main{
+        grid-template-columns: 1fr;
+    }
+
+    iframe {
+        width: 50%;
+        flex-basis: 50%;
+    }
+}
+
+/* De map aanpassen als het scherm kleiner is dan 1150 pixels */
+
+@media screen and (max-width: 1150px) {
+    iframe {
+        margin: auto;
+        display: block;
+        width: 85%;
+    }
+}
