@@ -1,3 +1,5 @@
+<%@ page import="domain.model.Boek" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -24,45 +26,57 @@
         <ul>
             <li><a href="index.jsp">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
-            <li><a href="overzicht.jsp" class="here">Overzicht</a></li>
+            <li><a href="Controller" class="here">Overzicht</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <h1>Overzicht</h1>
+    <h2>Overzicht</h2>
     <table>
+
+        <thead>
         <tr>
             <th>Titel</th>
             <th>Auteur</th>
             <th>Aantal</th>
             <th>Genre</th>
             <th>ISBN-nummer</th>
-            <th>Leeftijdsclassificatie</th>
+            <th>Leeftijd</th>
             <th>Wijzig</th>
             <th>Verwijder</th>
         </tr>
+
+        </thead>
+        <tbody>
+
+        <%
+            ArrayList<Boek> boeken = (ArrayList<Boek>) request.getAttribute("boeken");
+            for (Boek b : boeken) {
+        %>
+
         <tr>
-            <td>The Lord of the Rings</td>
-            <td>J.R.R. Tolkien</td>
-            <td>5</td>
-            <td>Fantasie</td>
-            <td>9780261103252</td>
-            <td>15</td>
+            <td><%= b.getTitel()%>
+            </td>
+            <td><%= b.getAuteur()%>
+            </td>
+            <td><%= b.getAantal()%>
+            </td>
+            <td><%= b.getGenre()%>
+            </td>
+            <td><%= b.getIsbn()%>
+            </td>
+            <td><%= b.getLeeftijd()%>
+            </td>
             <td><a href="#">Wijzig</a></td>
             <td><a href="#">Verwijder</a></td>
         </tr>
-        <tr>
-            <td>The Maze Runner</td>
-            <td>James Dashner</td>
-            <td>7</td>
-            <td>Avontuur</td>
-            <td>9781908435132</td>
-            <td>15</td>
-            <td><a href="#">Wijzig</a></td>
-            <td><a href="#">Verwijder</a></td>
-        </tr>
+        <%
+            }
+        %>
+        </tbody>
     </table>
+    <p> Het meeste aantal boeken is <strong><%= ((Boek)request.getAttribute("meeste")).getTitel() %></strong></p>
 </main>
 
 <footer>

@@ -24,7 +24,7 @@
         <ul>
             <li><a href="index.jsp" class="here">Home</a></li>
             <li><a href="voegtoe.jsp">Voeg toe</a></li>
-            <li><a href="overzicht.jsp">Overzicht</a></li>
+            <li><a href="Controller">Overzicht</a></li>
         </ul>
     </nav>
 </header>
