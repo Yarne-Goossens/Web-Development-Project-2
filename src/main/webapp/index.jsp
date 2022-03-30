@@ -1,3 +1,4 @@
+<%@ page import="domain.model.Boek" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -22,9 +23,10 @@
 
     <nav>
         <ul>
-            <li><a href="index.jsp" class="here">Home</a></li>
-            <li><a href="voegtoe.jsp">Voeg toe</a></li>
-            <li><a href="Controller">Overzicht</a></li>
+            <li><a href="Controller?command=index" class="here">Home</a></li>
+            <li><a href="Controller?command=zoekForm">Zoek</a></li>
+            <li><a href="Controller?command=voegtoe">Voeg toe</a></li>
+            <li><a href="Controller?command=overzicht">Overzicht</a></li>
         </ul>
     </nav>
 </header>
@@ -42,6 +44,8 @@
         <p>
             Je kan hier zien welke boeken er beschikbaar zijn in de bibliotheek en hoeveel er nog zijn.
         </p>
+        <p> Het boek waarvan we het grootste aantal hebben is <strong><%= ((Boek)request.getAttribute("grootste")).getTitel() %></strong></p>
+
     </article>
 
     <article>

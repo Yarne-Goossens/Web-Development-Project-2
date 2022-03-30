@@ -22,16 +22,17 @@
 
     <nav>
         <ul>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="voegtoe.jsp" class="here">Voeg toe</a></li>
-            <li><a href="Controller">Overzicht</a></li>
+            <li><a href="Controller?command=index">Home</a></li>
+            <li><a href="Controller?command=zoekForm">Zoek</a></li>
+            <li><a href="Controller?command=voegtoe" class="here">Voeg toe</a></li>
+            <li><a href="Controller?command=overzicht">Overzicht</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
     <article id="form" class="container">
-        <form action="Controller" method="POST">
+        <form action="Controller?command=add" method="POST" novalidate>
             <p><label for="titel" >Titel*</label><input type="text" id="titel" name="titel" required autofocus></p>
             <p><label for="auteur" >Auteur*</label><input type="text" id="auteur" name="auteur" required></p>
             <p><label for="aantal" >Aantal*</label><input type="number" id="aantal" name="aantal" required></p>

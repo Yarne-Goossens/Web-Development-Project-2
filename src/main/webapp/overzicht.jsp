@@ -24,9 +24,10 @@
 
     <nav>
         <ul>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="voegtoe.jsp">Voeg toe</a></li>
-            <li><a href="Controller" class="here">Overzicht</a></li>
+            <li><a href="Controller?command=index">Home</a></li>
+            <li><a href="Controller?command=zoekForm">Zoek</a></li>
+            <li><a href="Controller?command=voegtoe">Voeg toe</a></li>
+            <li><a href="Controller?command=overzicht" class="here">Overzicht</a></li>
         </ul>
     </nav>
 </header>
@@ -76,7 +77,6 @@
         %>
         </tbody>
     </table>
-    <p> Het meeste aantal boeken is <strong><%= ((Boek)request.getAttribute("meeste")).getTitel() %></strong></p>
 </main>
 
 <footer>

@@ -29,4 +29,14 @@ public class BibliotheekDB {
         }
         return aantal;
     }
+
+    public Boek vind(String boek) {
+        if (boek == null || boek.isEmpty())
+            throw new IllegalArgumentException("Het veld mag niet leeg zijn");
+        for (Boek b : boeklist) {
+            if (b.getTitel().contains(boek))
+                return b;
+        }
+        return null;
+    }
 }
