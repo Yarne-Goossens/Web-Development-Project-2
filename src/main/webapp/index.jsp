@@ -1,4 +1,3 @@
-<%@ page import="domain.model.Boek" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -15,21 +14,9 @@
 </head>
 
 <body>
-<header>
-    <section class="title">
-        <a href="index.jsp"><img src="images/biblogo.png" alt="logo"></a>
-        <h1>Bibliotheek</h1>
-    </section>
-
-    <nav>
-        <ul>
-            <li><a href="Controller?command=index" class="here">Home</a></li>
-            <li><a href="Controller?command=zoekForm">Zoek</a></li>
-            <li><a href="Controller?command=voegtoe">Voeg toe</a></li>
-            <li><a href="Controller?command=overzicht">Overzicht</a></li>
-        </ul>
-    </nav>
-</header>
+<jsp:include page="header.jsp">
+    <jsp:param name="current" value="index"/>
+</jsp:include>
 
 <main id="index">
     <article>
@@ -44,26 +31,18 @@
         <p>
             Je kan hier zien welke boeken er beschikbaar zijn in de bibliotheek en hoeveel er nog zijn.
         </p>
-        <p> Het boek waarvan we het grootste aantal hebben is <strong><%= ((Boek)request.getAttribute("grootste")).getTitel() %></strong></p>
+        <p> Het boek waarvan we het grootste aantal hebben is
+            <strong>${grootste.getTitel()}
+            </strong></p>
 
     </article>
 
     <article>
+        <h2>Foto van de bibliotheek</h2>
         <img src="images/bibliotheek.jpg" alt="foto bibliotheek">
     </article>
 </main>
 
-<footer>
-    <section>
-        <h2>Copyright</h2>
-
-        <address>
-            <ul>
-                <li>©Yarne Goossens</li>
-            </ul>
-        </address>
-    </section>
-</footer>
+<jsp:include page="footer.jsp"/>
 </body>
-
 </html>

@@ -1,5 +1,4 @@
-<%@ page import="domain.model.Boek" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -16,80 +15,55 @@
 </head>
 
 <body>
-<header>
-    <section class="title">
-        <a href="index.jsp"><img src="images/biblogo.png" alt="logo"></a>
-        <h1>Bibliotheek</h1>
-    </section>
-
-    <nav>
-        <ul>
-            <li><a href="Controller?command=index">Home</a></li>
-            <li><a href="Controller?command=zoekForm">Zoek</a></li>
-            <li><a href="Controller?command=voegtoe">Voeg toe</a></li>
-            <li><a href="Controller?command=overzicht" class="here">Overzicht</a></li>
-        </ul>
-    </nav>
-</header>
+<jsp:include page="header.jsp">
+    <jsp:param name="current" value="overzicht"/>
+</jsp:include>
 
 <main>
-    <h2>Overzicht</h2>
-    <table>
-
-        <thead>
-        <tr>
-            <th>Titel</th>
-            <th>Auteur</th>
-            <th>Aantal</th>
-            <th>Genre</th>
-            <th>ISBN-nummer</th>
-            <th>Leeftijd</th>
-            <th>Wijzig</th>
-            <th>Verwijder</th>
-        </tr>
-
-        </thead>
-        <tbody>
-
-        <%
-            ArrayList<Boek> boeken = (ArrayList<Boek>) request.getAttribute("boeken");
-            for (Boek b : boeken) {
-        %>
-
-        <tr>
-            <td><%= b.getTitel()%>
-            </td>
-            <td><%= b.getAuteur()%>
-            </td>
-            <td><%= b.getAantal()%>
-            </td>
-            <td><%= b.getGenre()%>
-            </td>
-            <td><%= b.getIsbn()%>
-            </td>
-            <td><%= b.getLeeftijd()%>
-            </td>
-            <td><a href="#">Wijzig</a></td>
-            <td><a href="#">Verwijder</a></td>
-        </tr>
-        <%
-            }
-        %>
-        </tbody>
-    </table>
+    <c:choose>
+        <c:when test="${not empty boeken}">
+        <h2>Overzicht</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Auteur</th>
+                <th>Aantal</th>
+                <th>Genre</th>
+                <th>ISBN-nummer</th>
+                <th>Leeftijd</th>
+                <th>Wijzig</th>
+                <th>Verwijder</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="boek" items="${boeken}">
+                <tr>
+                    <td>${boek.titel}
+                    </td>
+                    <td>${boek.auteur}
+                    </td>
+                    <td>${boek.aantal}
+                    </td>
+                    <td>${boek.genre}
+                    </td>
+                    <td>${boek.isbn}
+                    </td>
+                    <td>${boek.leeftijd}
+                    </td>
+                    <td><a href="#">Wijzig</a></td>
+                    <td><a href="#">Verwijder</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        </c:when>
+        <c:otherwise>
+            <p>Er zijn geen boeken </p>
+        </c:otherwise>
+    </c:choose>
 </main>
 
-<footer>
-    <section>
-        <h2>Copyright</h2>
-
-        <address>
-            <ul>
-                <li>©Yarne Goossens</li>
-            </ul>
-        </address>
-    </section>
-</footer>
+<jsp:include page="footer.jsp"/>
 </body>
-
 </html>

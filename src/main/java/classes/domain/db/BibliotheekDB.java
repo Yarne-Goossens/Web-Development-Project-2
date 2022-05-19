@@ -1,6 +1,7 @@
-package domain.db;
+package classes.domain.db;
 
-import domain.model.Boek;
+import classes.DomainException;
+import classes.domain.model.Boek;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +15,22 @@ public class BibliotheekDB {
         this.voegToe(new Boek("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 10, "Fantasie", "9789076174082", 12));
     }
 
-    public ArrayList getBoeken(){return (ArrayList<Boek>) this.boeklist;}
+    public ArrayList getBoeken() {
+        return (ArrayList<Boek>) this.boeklist;
+    }
 
     public void voegToe(Boek boek) {
+        if (boek == null)
+            throw new DomainException("Het boek dat je toevoegde is ongeldig");
+        if (vind(boek.getTitel()) != null)
+            throw new DomainException("Je mag een boek maar één keer toevoegen");
         boeklist.add(boek);
     }
 
-    public Boek meesteBoeken(){
+    public Boek meesteBoeken() {
         Boek aantal = boeklist.get(0);
-        for(Boek i : boeklist){
-            if(i.getAantal() > aantal.getAantal()){
+        for (Boek i : boeklist) {
+            if (i.getAantal() > aantal.getAantal()) {
                 aantal = i;
             }
         }
@@ -32,9 +39,9 @@ public class BibliotheekDB {
 
     public Boek vind(String boek) {
         if (boek == null || boek.isEmpty())
-            throw new IllegalArgumentException("Het veld mag niet leeg zijn");
+            throw new DomainException("Het veld mag niet leeg zijn");
         for (Boek b : boeklist) {
-            if (b.getTitel().contains(boek))
+            if (b.getTitel().equalsIgnoreCase(boek))
                 return b;
         }
         return null;

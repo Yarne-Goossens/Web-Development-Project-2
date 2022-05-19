@@ -14,44 +14,21 @@
 </head>
 
 <body>
-<header>
-    <section class="title">
-        <a href="index.jsp"><img src="images/biblogo.png" alt="logo"></a>
-        <h1>Bibliotheek</h1>
-    </section>
-
-    <nav>
-        <ul>
-            <li><a href="Controller?command=index">Home</a></li>
-            <li><a href="Controller?command=zoekForm" class="here">Zoek</a></li>
-            <li><a href="Controller?command=voegtoe">Voeg toe</a></li>
-            <li><a href="Controller?command=overzicht">Overzicht</a></li>
-        </ul>
-    </nav>
-</header>
+<jsp:include page="header.jsp">
+    <jsp:param name="current" value="zoekForm"/>
+</jsp:include>
 
 <main>
     <article id="form" class="container">
         <h2>Zoek voor een boek</h2>
         <form action="Controller" method="post" novalidate>
-            <p><label for="titel">Titel</label><input type="text" id="titel" name="titel" required autofocus></p>
-            <input type="hidden" name="command" value="confirmation">
+            <p><label for="boek">Titel </label><input type="text" id="boek" name="boek" required autofocus></p>
+            <input type="hidden" name="command" value="resultaat">
             <p><input type="submit" id="verstuur" value="indienen"></p>
         </form>
     </article>
 </main>
 
-<footer>
-    <section>
-        <h2>Copyright</h2>
-
-        <address>
-            <ul>
-                <li>©Yarne Goossens</li>
-            </ul>
-        </address>
-    </section>
-</footer>
+<jsp:include page="footer.jsp"/>
 </body>
-
 </html>

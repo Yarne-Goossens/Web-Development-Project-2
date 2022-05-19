@@ -193,6 +193,31 @@ form{
     grid-column: 2;
 }
 
+.form-group has-succes {
+    color: blue;
+}
+
+.form-group has-error {
+    color: red;
+}
+
+div#error {
+    border: 2px solid rgb(191, 3, 123);
+    color: rgb(191, 3, 123);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(254, 234, 247);
+    margin-bottom: 15px;
+}
+
+div#error ul {
+    list-style-type: none;
+}
+
+input.error {
+    border: 2px solid rgb(191, 3, 123);
+}
+
 input {
     margin: 0;
     width: 75%;

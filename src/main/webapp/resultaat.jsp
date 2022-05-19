@@ -1,4 +1,4 @@
-<%@ page import="domain.model.Boek" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -15,58 +15,37 @@
 </head>
 
 <body>
-<header>
-    <section class="title">
-        <a href="index.jsp"><img src="images/biblogo.png" alt="logo"></a>
-        <h1>Bibliotheek</h1>
-    </section>
+<jsp:include page="header.jsp">
+    <jsp:param name="current" value="zoekForm"/>
+</jsp:include>
 
-    <nav>
-        <ul>
-            <li><a href="Controller?command=index">Home</a></li>
-            <li><a href="Controller?command=zoek" class="here">Zoek</a></li>
-            <li><a href="Controller?command=voegtoe">Voeg toe</a></li>
-            <li><a href="Controller?command=overzicht">Overzicht</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main id="index">
-    <h2>Zoekresultaat</h2>
-    <% if (request.getAttribute("boek") != null) {%>
-    <p>We vonden dit boek <%= request.getParameter("boek")%>:</p>
-    <% Boek b = (Boek) request.getAttribute("boek");%>
-    <ul>
-        <li>Naam: <%= b.getTitel()%>
-        </li>
-        <li>Auteur: <%= b.getAuteur()%>
-        </li>
-        <li>Aantal: <%= b.getAantal()%>
-        </li>
-        <li>Genre: <%= b.getGenre()%>
-        </li>
-        <li>ISBN: <%= b.getIsbn()%>
-        </li>
-        <li>Leeftijd: <%= b.getLeeftijd()%>
-        </li>
-    </ul>
-
-    <%} else {%>
-    <p>We konden het boek genaamd <%= request.getParameter("boek")%> helaas niet vinden. </p>
-    <%}%>
+<main>
+    <c:choose>
+        <c:when test="${not empty boek}">
+            <article><h2>Zoekresultaat</h2>
+                <p>We vonden dit boek voor "${param.boek}":</p>
+                <ul>
+                    <li>Naam: ${boek.titel}
+                    </li>
+                    <li>Auteur: ${boek.auteur}
+                    </li>
+                    <li>Aantal: ${boek.aantal}
+                    </li>
+                    <li>Genre: ${boek.genre}
+                    </li>
+                    <li>ISBN: ${boek.isbn}
+                    </li>
+                    <li>Leeftijd: ${boek.leeftijd}
+                    </li>
+                </ul>
+            </article>
+        </c:when>
+        <c:otherwise>
+            <p>We konden het boek genaamd ${param.boek} helaas niet vinden. </p>
+        </c:otherwise>
+    </c:choose>
 </main>
 
-<footer>
-    <section>
-        <h2>Copyright</h2>
-
-        <address>
-            <ul>
-                <li>©Yarne Goossens</li>
-            </ul>
-        </address>
-    </section>
-</footer>
+<jsp:include page="footer.jsp"/>
 </body>
-
 </html>

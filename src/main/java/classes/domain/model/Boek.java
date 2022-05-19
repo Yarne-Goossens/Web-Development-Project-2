@@ -1,4 +1,6 @@
-package domain.model;
+package classes.domain.model;
+
+import classes.DomainException;
 
 public class Boek {
     private String titel;
@@ -8,7 +10,8 @@ public class Boek {
     private String isbn;
     private int leeftijd;
 
-    public Boek(){}
+    public Boek() {
+    }
 
     public Boek(String titel, String auteur, int aantal, String genre, String isbn, int leeftijd) {
         this.setTitel(titel);
@@ -28,35 +31,35 @@ public class Boek {
 
     public void setAuteur(String auteur) {
         if (auteur == null || auteur.isEmpty()) {
-            throw new IllegalArgumentException("Vul een correcte naam in.");
+            throw new DomainException("Vul een correcte naam in.");
         }
         this.auteur = auteur;
     }
 
     public void setAantal(int aantal) {
         if (aantal < 0) {
-            throw new IllegalArgumentException("Vul een correct aantal in.");
+            throw new DomainException("Vul een correct aantal in.");
         }
         this.aantal = aantal;
     }
 
     public void setGenre(String genre) {
         if (genre == null || genre.isEmpty()) {
-            throw new IllegalArgumentException("Vul een correct genre in.");
+            throw new DomainException("Vul een correct genre in.");
         }
         this.genre = genre;
     }
 
     public void setIsbn(String isbn) {
-        if (isbn == null || isbn.isEmpty()) {
-            throw new IllegalArgumentException("Vul een correct ISBN-nummer in.");
+        if (isbn == null || isbn.isEmpty() || !isbn.matches("[0-9]+") || isbn.length() != 13) {
+            throw new DomainException("Vul een correct ISBN-nummer in. (Een isbn nummer moet 13 cijfers lang zijn.)");
         }
         this.isbn = isbn;
     }
 
     public void setLeeftijd(int leeftijd) {
-        if (leeftijd <= 0) {
-            throw new IllegalArgumentException("Vul een correcte leeftijd in.");
+        if (leeftijd < 0) {
+            throw new DomainException("Vul een correcte leeftijd in.");
         }
         this.leeftijd = leeftijd;
     }

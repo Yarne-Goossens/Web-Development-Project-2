@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -14,47 +15,60 @@
 </head>
 
 <body>
-<header>
-    <section class="title">
-        <a href="index.jsp"><img src="images/biblogo.png" alt="logo"></a>
-        <h1>Bibliotheek</h1>
-    </section>
-
-    <nav>
-        <ul>
-            <li><a href="Controller?command=index">Home</a></li>
-            <li><a href="Controller?command=zoekForm">Zoek</a></li>
-            <li><a href="Controller?command=voegtoe" class="here">Voeg toe</a></li>
-            <li><a href="Controller?command=overzicht">Overzicht</a></li>
-        </ul>
-    </nav>
-</header>
+<jsp:include page="header.jsp">
+    <jsp:param name="current" value="voegtoe"/>
+</jsp:include>
 
 <main>
+    <c:if test="${not empty errors}">
+        <div id="error" class="alert alert-danger">
+            <ul>
+                <c:forEach items="${errors}" var="error">
+                    <li>${error}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
+
     <article id="form" class="container">
+        <h2>Voeg een boek toe</h2>
         <form action="Controller?command=add" method="POST" novalidate>
-            <p><label for="titel" >Titel*</label><input type="text" id="titel" name="titel" required autofocus></p>
-            <p><label for="auteur" >Auteur*</label><input type="text" id="auteur" name="auteur" required></p>
-            <p><label for="aantal" >Aantal*</label><input type="number" id="aantal" name="aantal" required></p>
-            <p><label for="genre" >Genre*</label><input type="text" id="genre" name="genre" required></p>
-            <p><label for="isbn" >ISBN-nummer*</label><input type="text" id="isbn" name="isbn" required></p>
-            <p><label for="leeftijd" >Leeftijdsclassificatie*</label><input type="number" id="leeftijd" name="leeftijd" required></p>
+            <p class="form-group">
+                <label class="control-label" for="titel">Titel:</label>
+                <input id="titel" name="titel" type="text"
+                       value="${titelPreviousValue}" class="${titelHasErrors? 'error' : ''}" required>
+            </p>
+            <p class="form-group">
+                <label class="control-label" for="auteur">Auteur:</label>
+                <input id="auteur" name="auteur" type="text"
+                       value="${auteurPreviousValue}" class="${auteurHasErrors? 'error' : ''}" required>
+            </p>
+            <p class="form-group">
+                <label for="aantal">Aantal:</label>
+                <input
+                        id="aantal" name="aantal" type="number"
+                        min="0" value="${aantalPreviousValue}" class="${aantalHasErrors? 'error' : ''}">
+            </p>
+            <p class="form-group">
+                <label class="control-label" for="genre">Genre:</label>
+                <input id="genre" name="genre" type="text"
+                       value="${genrePreviousValue}" class="${genreHasErrors? 'error' : ''}" required>
+            </p>
+            <p class="form-group">
+                <label class="control-label" for="isbn">ISBN-nummer:</label>
+                <input id="isbn" name="isbn" type="text"
+                       value="${isbnPreviousValue}" class="${isbnHasErrors? 'error' : ''}" required>
+            </p>
+            <p class="form-group">
+                <label class="control-label" for="leeftijd">Leeftijd:</label>
+                <input id="leeftijd" name="leeftijd" type="number"
+                       min="0" value="${leeftijdPreviousValue}" class="${leeftijdHasErrors? 'error' : ''}" required>
+            </p>
             <p><input type="submit" id="verstuur" value="Indienen"></p>
         </form>
     </article>
 </main>
 
-<footer>
-    <section>
-        <h2>Copyright</h2>
-
-        <address>
-            <ul>
-                <li>©Yarne Goossens</li>
-            </ul>
-        </address>
-    </section>
-</footer>
+<jsp:include page="footer.jsp"/>
 </body>
-
 </html>
