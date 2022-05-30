@@ -34,7 +34,7 @@ public class Testen {
         driver.get("https://html5.validator.nu/");
         WebElement invulveld = driver.findElement(By.id("doc"));
 
-        invulveld.sendKeys("https://r0882857.webontwerp.ucll.be/website/");
+        invulveld.sendKeys("http://cyclone3.uclllabs.be:8081/Yarne_Goossens_war/Controller?command=default");
 
         WebElement button = driver.findElement(By.id("submit"));
         button.click();
@@ -48,7 +48,7 @@ public class Testen {
         driver.get("https://html5.validator.nu/");
         WebElement invulveld = driver.findElement(By.id("doc"));
 
-        invulveld.sendKeys("https://r0882857.webontwerp.ucll.be/website/");
+        invulveld.sendKeys("http://cyclone3.uclllabs.be:8081/Yarne_Goossens_war/Controller?command=zoekform");
 
         WebElement button = driver.findElement(By.id("submit"));
         button.click();
@@ -62,7 +62,7 @@ public class Testen {
         driver.get("https://html5.validator.nu/");
         WebElement invulveld = driver.findElement(By.id("doc"));
 
-        invulveld.sendKeys("https://r0882857.webontwerp.ucll.be/website/");
+        invulveld.sendKeys("http://cyclone3.uclllabs.be:8081/Yarne_Goossens_war/Controller?command=voegtoe");
 
         WebElement button = driver.findElement(By.id("submit"));
         button.click();
@@ -76,7 +76,7 @@ public class Testen {
         driver.get("https://html5.validator.nu/");
         WebElement invulveld = driver.findElement(By.id("doc"));
 
-        invulveld.sendKeys("https://r0882857.webontwerp.ucll.be/website/");
+        invulveld.sendKeys("http://cyclone3.uclllabs.be:8081/Yarne_Goossens_war/Controller?command=overzicht");
 
         WebElement button = driver.findElement(By.id("submit"));
         button.click();
@@ -90,7 +90,7 @@ public class Testen {
         driver.get("https://html5.validator.nu/");
         WebElement invulveld = driver.findElement(By.id("doc"));
 
-        invulveld.sendKeys("https://r0882857.webontwerp.ucll.be/website/");
+        invulveld.sendKeys("http://cyclone3.uclllabs.be:8081/Yarne_Goossens_war/Controller?command=logboek");
 
         WebElement button = driver.findElement(By.id("submit"));
         button.click();
