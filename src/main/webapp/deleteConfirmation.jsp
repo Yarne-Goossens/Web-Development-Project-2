@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -15,29 +16,14 @@
 
 <body>
 <jsp:include page="header.jsp">
-    <jsp:param name="current" value="index"/>
+    <jsp:param name="current" value="overzicht"/>
 </jsp:include>
 
-<main id="index">
-    <article>
-        <h2>
-            Info
-        </h2>
-
-        <p>
-            Op deze site kan je allerlei info vinden over de biliotheek.
-        </p>
-
-        <p>
-            Je kan hier zien welke boeken er beschikbaar zijn in de bibliotheek en hoeveel er nog zijn.
-        </p>
-        <p> Het boek waarvan we het grootste aantal hebben is <strong>${grootste.getTitel()}</strong></p>
-    </article>
-
-    <article>
-        <h2>Foto van de bibliotheek</h2>
-        <img src="images/bibliotheek.jpg" alt="foto bibliotheek">
-    </article>
+<main>
+    <h2>Bevestiging</h2>
+    <p>Weet je zeker dat je het boek ${boek.titel} wilt verwijderen?</p>
+    <p><a href="Controller?command=delete&id=${boek.id}">Verwijder het boek.</a></p>
+    <p><a href="Controller?command=overzicht">Cancel</a> Ga terug naar de overzichtspagina.</p>
 </main>
 
 <jsp:include page="footer.jsp"/>

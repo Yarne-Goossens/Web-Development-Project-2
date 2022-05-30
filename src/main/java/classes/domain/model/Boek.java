@@ -1,7 +1,5 @@
 package classes.domain.model;
 
-import classes.DomainException;
-
 public class Boek {
     private String titel;
     private String auteur;
@@ -9,22 +7,24 @@ public class Boek {
     private String genre;
     private String isbn;
     private int leeftijd;
+    private int id;
 
     public Boek() {
     }
 
-    public Boek(String titel, String auteur, int aantal, String genre, String isbn, int leeftijd) {
+    public Boek(String titel, String auteur, int aantal, String genre, String isbn, int leeftijd, int id) {
         this.setTitel(titel);
         this.setAuteur(auteur);
         this.setAantal(aantal);
         this.setGenre(genre);
         this.setIsbn(isbn);
         this.setLeeftijd(leeftijd);
+        this.setId(id);
     }
 
     public void setTitel(String titel) {
         if (titel == null || titel.isEmpty()) {
-            throw new IllegalArgumentException("Vul een correcte titel in.");
+            throw new DomainException("Vul een correcte titel in.");
         }
         this.titel = titel;
     }
@@ -64,6 +64,13 @@ public class Boek {
         this.leeftijd = leeftijd;
     }
 
+    public void setId(int id) {
+        if (id < 0) {
+            throw new DomainException("Id mag niet minder dan 0 zijn.");
+        }
+        this.id = id;
+    }
+
     public String getTitel() {
         return titel;
     }
@@ -86,5 +93,9 @@ public class Boek {
 
     public int getLeeftijd() {
         return leeftijd;
+    }
+
+    public int getId() {
+        return id;
     }
 }

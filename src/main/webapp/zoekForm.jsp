@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="nl">
@@ -19,10 +20,19 @@
 </jsp:include>
 
 <main>
+    <c:if test="${not empty errors}">
+        <div id="error" class="alert alert-danger">
+            <ul>
+                <c:forEach items="${errors}" var="error">
+                    <li>${error}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
     <article id="form" class="container">
         <h2>Zoek voor een boek</h2>
         <form action="Controller" method="post" novalidate>
-            <p><label for="boek">Titel </label><input type="text" id="boek" name="boek" required autofocus></p>
+            <p><label for="boek">Titel: </label><input type="text" id="boek" name="boek" value="${boek}" autofocus></p>
             <input type="hidden" name="command" value="resultaat">
             <p><input type="submit" id="verstuur" value="indienen"></p>
         </form>

@@ -23,7 +23,7 @@
     <c:choose>
         <c:when test="${not empty boek}">
             <article><h2>Zoekresultaat</h2>
-                <p>We vonden dit boek voor "${param.boek}":</p>
+                <p>We vonden dit boek voor ${param.boek}:</p>
                 <ul>
                     <li>Naam: ${boek.titel}
                     </li>
@@ -41,7 +41,7 @@
             </article>
         </c:when>
         <c:otherwise>
-            <p>We konden het boek genaamd ${param.boek} helaas niet vinden. </p>
+            <p>We konden het boek genaamd ${param.boek} helaas niet vinden.</p>
         </c:otherwise>
     </c:choose>
 </main>

@@ -22,41 +22,45 @@
 <main>
     <c:choose>
         <c:when test="${not empty boeken}">
-        <h2>Overzicht</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Titel</th>
-                <th>Auteur</th>
-                <th>Aantal</th>
-                <th>Genre</th>
-                <th>ISBN-nummer</th>
-                <th>Leeftijd</th>
-                <th>Wijzig</th>
-                <th>Verwijder</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="boek" items="${boeken}">
+            <h2>Overzicht</h2>
+            <table>
+                <thead>
                 <tr>
-                    <td>${boek.titel}
-                    </td>
-                    <td>${boek.auteur}
-                    </td>
-                    <td>${boek.aantal}
-                    </td>
-                    <td>${boek.genre}
-                    </td>
-                    <td>${boek.isbn}
-                    </td>
-                    <td>${boek.leeftijd}
-                    </td>
-                    <td><a href="#">Wijzig</a></td>
-                    <td><a href="#">Verwijder</a></td>
+                    <th>Titel</th>
+                    <th>Auteur</th>
+                    <th>Aantal</th>
+                    <th>Genre</th>
+                    <th>ISBN-nummer</th>
+                    <th>Leeftijd</th>
+                    <th>Wijzig</th>
+                    <th>Verwijder</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach var="boek" items="${boeken}">
+                    <tr id="rowid${boek.id}">
+                        <td>${boek.titel}
+                        </td>
+                        <td>${boek.auteur}
+                        </td>
+                        <td>${boek.aantal}
+                        </td>
+                        <td>${boek.genre}
+                        </td>
+                        <td>${boek.isbn}
+                        </td>
+                        <td>${boek.leeftijd}
+                        </td>
+                        <td>
+                            <a href="Controller?command=wijzigen&id=${boek.id}" id="wijzig${boek.id}">Wijzig</a>
+                        </td>
+                        <td>
+                            <a href="Controller?command=deleteConfirmation&id=${boek.id}" id="delete${boek.id}">Verwijder</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </c:when>
         <c:otherwise>
             <p>Er zijn geen boeken </p>
